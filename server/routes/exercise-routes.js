@@ -1,30 +1,29 @@
 const router = require('express').Router();
-let Cardio = require('../models/Cardio');
+let Exercise = require('../models/Exercise');
 
 router.route('/').get((req, res) => {
-  Cardio.find()
-    .then(cardio => res.json(cardio))
+  Exercise.find()
+    .then(exercises => res.json(exercises))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/add').post((req, res) => {
   const username = req.body.username;
   const name = req.body.name;
-  const distance = req.body.distance;
   const duration = req.body.duration;
-  const createdAt = req.body.createdAt;
+  const distance = req.body.distance;
+  const date = Date.parse(req.body.date);
 
-
-  const newCardio = new Cardio({
+  const newExercise = new Exercise({
     username,
     name,
-    distance,
     duration,
-    createdAt,
+    distance,
+    date,
   });
 
-  newCardio.save()
-  .then(() => res.json('Cardio added!'))
+  newExercise.save()
+  .then(() => res.json('Exercise added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
 

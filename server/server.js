@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
-const cardioRouter = require('./routes/cardio-routes');
 const usersRouter = require('./routes/user-routes');
+const exerciseRouter = require('./routes/exercise-routes');
 
 const db = require("./config/connection");
 
@@ -20,8 +20,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use('/cardio', cardioRouter);
 app.use('/users', usersRouter);
+app.use('/exercise', exerciseRouter);
 
 db.once("open", () => {
   app.listen(PORT, () => {
