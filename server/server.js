@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const usersRouter = require('./routes/user-routes');
-const exerciseRouter = require('./routes/exercise-routes');
+const exercisesRouter = require('./routes/exercise-routes');
 
 const db = require("./config/connection");
 
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use('/users', usersRouter);
-app.use('/exercise', exerciseRouter);
+app.use('/exercises', exercisesRouter);
 
 db.once("open", () => {
   app.listen(PORT, () => {
