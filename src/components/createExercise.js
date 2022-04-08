@@ -6,7 +6,6 @@ export default class CreateExercise extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onChangeDistance = this.onChangeDistance.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
@@ -14,10 +13,9 @@ export default class CreateExercise extends Component {
 
     this.state = {
       username: '',
-      name: '',
-      duration: 0,
+      duration: '',
       distance: '',
-      date: new Date(),
+      date: '',
       users: []
     }
   }
@@ -41,12 +39,6 @@ export default class CreateExercise extends Component {
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
-    })
-  }
-
-  onChangeName(e) {
-    this.setState({
-      name: e.target.value
     })
   }
   
@@ -73,7 +65,6 @@ export default class CreateExercise extends Component {
 
     const exercise = {
       username: this.state.username,
-      name: this.state.name,
       duration: this.state.duration,
       distance: this.state.distance,
       date: this.state.date
@@ -94,29 +85,12 @@ export default class CreateExercise extends Component {
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>Username: </label>
-          <select ref="userInput"
-              required
-              className="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}>
-              {
-                this.state.users.map(function(user) {
-                  return <option 
-                    key={user}
-                    value={user}>{user}
-                    </option>;
-                })
-              }
-          </select>
-        </div>
-        <div className="form-group"> 
-          <label>Name: </label>
           <input 
               type="text"
               required
               className="form-control"
-              value={this.state.name}
-              onChange={this.onChangeName}>
+              value={this.state.username}
+              onChange={this.onChangeUsername}>
           </input>
         </div>
         <div className="form-group">
@@ -129,7 +103,7 @@ export default class CreateExercise extends Component {
               />
         </div>
         <div className="form-group"> 
-          <label>Distance: </label>
+          <label>Distance (in miles): </label>
           <input  type="text"
               className="form-control"
               value={this.state.distance}

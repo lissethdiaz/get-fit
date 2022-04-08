@@ -6,7 +6,6 @@ export default class EditExercise extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onChangeDistance = this.onChangeDistance.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
@@ -14,10 +13,9 @@ export default class EditExercise extends Component {
 
     this.state = {
       username: '',
-      name: '',
-      duration: 0,
+      duration: '',
       distance: '',
-      date: new Date(),
+      date: '',
       users: []
     }
   }
@@ -27,7 +25,6 @@ export default class EditExercise extends Component {
       .then(response => {
         this.setState({
           username: response.data.username,
-          name: response.data.name,
           duration: response.data.duration,
           distance: response.data.distance,
           date: new Date(response.data.date)
@@ -49,12 +46,6 @@ export default class EditExercise extends Component {
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
-    });
-  }
-
-  onChangeName(e) {
-    this.setState({
-      name: e.target.value
     });
   }
 
@@ -81,7 +72,6 @@ export default class EditExercise extends Component {
 
     const exercise = {
       username: this.state.username,
-      name: this.state.name,
       duration: this.state.duration,
       distance: this.state.distance,
       date: this.state.date,
@@ -102,27 +92,11 @@ export default class EditExercise extends Component {
         <form onSubmit={this.onSubmit}>
           <div className="form-group"> 
             <label>Username: </label>
-            <select ref="userInput"
+            <input
+                type="text"
                 className="form-control"
                 value={this.state.username}
                 onChange={this.onChangeUsername}>
-                {
-                  this.state.users.map(function(user) {
-                    return <option 
-                      key={user}
-                      value={user}>{user}
-                      </option>;
-                  })
-                }
-            </select>
-          </div>
-          <div className="form-group"> 
-            <label>Name: </label>
-            <input 
-                type="text"
-                className="form-control"
-                value={this.state.name}
-                onChange={this.onChangeName}>
             </input>
           </div>
           <div className="form-group">
@@ -135,7 +109,7 @@ export default class EditExercise extends Component {
                 />
           </div>
           <div className="form-group"> 
-            <label>Distance: </label>
+            <label>Distance (in miles): </label>
             <input  type="text"
                 required
                 className="form-control"
