@@ -8,7 +8,9 @@
 
   https://running-track.herokuapp.com/
 
-  ![](screenshot.png)
+  ![](screenshot1.png)
+  ![](screenshot2.png)
+  ![](screenshot3.png)
 
   ## Technologies Used
 
