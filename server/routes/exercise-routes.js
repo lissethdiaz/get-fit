@@ -43,10 +43,9 @@ router.route('/update/:id').post((req, res) => {
   Exercise.findById(req.params.id)
     .then(exercise => {
       exercise.username = req.body.username;
-      exercise.name = req.body.name;
-      exercise.duration = Number(req.body.duration);
-      exercise.distance = Number(req.body.distance);
-      exercise.date = Date.parse(req.body.date);
+      exercise.duration = (req.body.duration);
+      exercise.distance = (req.body.distance);
+      exercise.date = (req.body.date);
 
       exercise.save()
         .then(() => res.json('Exercise has been updated'))
