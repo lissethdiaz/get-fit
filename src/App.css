@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.image {
+  background-image: url(./images/background.jpg);
+  height: 100vh;
+}
+
+.form-control {
+  width: 200px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

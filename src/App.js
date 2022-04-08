@@ -11,7 +11,9 @@ import CreateUser from './components/createUser';
 
 const App = () => {
 
+  
   return (
+    <div className='image'>
     <Router>
     <div className="container">
       <Navbar />
@@ -22,6 +24,8 @@ const App = () => {
       <Route path="/user" component={CreateUser} />
     </div>
     </Router>
+    </div>
+    
   );
 }
 
